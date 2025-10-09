@@ -1,20 +1,16 @@
 package br.PUCPR.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Setter
+@Getter
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @Setter
-    @Getter
+    @Column(name = "ID_CLIENTE")
     private int idCliente;
     private String nome;
     private String cpf;

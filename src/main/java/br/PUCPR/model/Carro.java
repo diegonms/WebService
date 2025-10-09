@@ -1,21 +1,16 @@
 package br.PUCPR.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class Carro {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Getter
-    @Setter
+    @Column(name = "ID_CARRO")
     private int idCarro;
     private String marca;
     private String modelo;
@@ -55,7 +50,6 @@ public class Carro {
     @Override
     public String toString() {
         return "Carro{" +
-                "id=" + id +
                 ", marca='" + marca + '\'' +
                 ", modelo='" + modelo + '\'' +
                 ", placa='" + placa + '\'' +
