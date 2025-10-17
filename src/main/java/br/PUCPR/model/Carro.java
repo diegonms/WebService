@@ -17,10 +17,9 @@ public class Carro {
     private String placa;
     private String status;
 
-    // Construtor padrão (obrigatório pelo JPA)
+
     public Carro() {}
 
-    // Construtor com parâmetros (opcional, útil para testes)
     public Carro(String marca, String modelo, String placa, String status) {
         this.marca = marca;
         this.modelo = modelo;
