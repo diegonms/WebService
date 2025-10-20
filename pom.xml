@@ -119,7 +119,7 @@
                             <artifactId>lombok</artifactId>
                             <version>1.18.42</version>
                         </path>
-                    </annotationProcessorPaths>
+                    </annotationProcessorPaths><source>8</source><target>8</target>
                 </configuration>
             </plugin>
         </plugins>
