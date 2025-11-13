@@ -84,9 +84,6 @@ INSERT INTO MANUTENCAO (ID_MANUTENCAO, FK_CARRO_ID, DATA_MANUTENCAO, DESCRICAO, 
 -- POPULAR AVALIACOES DE CLIENTES
 -- ===============================================
 
--- Apaga avaliações antigas (opcional)
-DELETE FROM AVALIACAO;
-
 -- Inserindo avaliações de exemplo
 INSERT INTO AVALIACAO (FK_ALUGUEL_ID, NOTA, COMENTARIO, DATA_AVALIACAO)
 VALUES
@@ -100,10 +97,6 @@ VALUES
     (8, 3, 'Carro bom, mas o processo de devolução foi lento.', '2025-11-13'),
     (9, 5, 'Atendimento rápido e carro novo. Excelente!', '2025-11-13'),
     (10, 4, 'Boa experiência geral, recomendo a locadora.', '2025-11-13');
-
--- ===============================================
--- POPULAR TABELA SEGURO
--- ===============================================
 
 -- Limpa os dados antigos (opcional)
 DELETE FROM SEGURO;
