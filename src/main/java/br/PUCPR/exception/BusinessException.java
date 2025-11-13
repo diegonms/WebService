@@ -1,18 +1,14 @@
 package br.PUCPR.exception;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+public class BusinessException extends RuntimeException {
+    private final String code;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
-@AllArgsConstructor
-public class BusinessException extends Exception {
+    public BusinessException(String code, String message) {
+        super(message);
+        this.code = code;
+    }
 
-    private static final long serialVersionUID = 1L;
-
-    private String codeDescription;
-    private String message;
-
-
+    public String getCode() {
+        return code;
+    }
 }

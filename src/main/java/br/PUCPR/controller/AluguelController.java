@@ -15,22 +15,15 @@ public class AluguelController {
     @Autowired
     private AluguelRepository aluguelRepository;
 
-    // Listar todos os aluguéis (SEM JOIN) — retorna a entidade Aluguel
+    // ficou sem joinnn
     @GetMapping
     public List<Aluguel> listar() {
         return aluguelRepository.findAll();
     }
 
-    // Buscar Aluguel pelo ID (SEM JOIN)
     @GetMapping("/{id}")
     public Aluguel buscarPorId(@PathVariable Long id) {
         return aluguelRepository.findById(id).orElse(null);
-    }
-
-    // Mantive um endpoint /basico caso queira outra rota - agora redundante, mas deixei por compatibilidade
-    @GetMapping("/basico")
-    public List<Aluguel> listarBasico() {
-        return aluguelRepository.findAll();
     }
 
     // Cadastrar Aluguel
