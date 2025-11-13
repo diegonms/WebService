@@ -98,9 +98,6 @@ VALUES
     (9, 5, 'Atendimento rápido e carro novo. Excelente!', '2025-11-13'),
     (10, 4, 'Boa experiência geral, recomendo a locadora.', '2025-11-13');
 
--- Limpa os dados antigos (opcional)
-DELETE FROM SEGURO;
-
 -- Insere seguros de exemplo
 INSERT INTO SEGURO (FK_ALUGUEL_ID, TIPO, VALOR, COBERTURA, DATA_INICIO, DATA_FIM)
 VALUES
