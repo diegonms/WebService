@@ -1,8 +1,11 @@
 package br.PUCPR.controller;
 
+import br.PUCPR.exception.BusinessException;
 import br.PUCPR.model.Carro;
 import br.PUCPR.repository.CarroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,10 +30,15 @@ public class CarroController {
         return carroRepository.findById(id).orElse(null);
     }
 
-    // Criar novo carro
+    // modifiquei o metodo para incluir a exception de placa duplicada - leonardo
     @PostMapping
-    public Carro criar(@RequestBody Carro Carro) {
-        return carroRepository.save(Carro);
+    public ResponseEntity<Carro> criar(@RequestBody Carro carro) {
+        if (carroRepository.existsByPlaca(carro.getPlaca())) {
+            throw new BusinessException("PLACA_DUPLICADA", "Já existe um carro com esta placa.");
+        }
+
+        Carro novo = carroRepository.save(carro);
+        return ResponseEntity.status(HttpStatus.CREATED).body(novo);
     }
 
     // Atualizar carro existente

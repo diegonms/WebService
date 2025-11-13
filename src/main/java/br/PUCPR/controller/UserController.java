@@ -52,9 +52,6 @@ public class UserController {
         User novo = userRepository.save(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(novo);
     }
-    public ResponseEntity<User> save(@Valid @RequestBody User user) {
-
-    }
 
     @GetMapping
     @Operation(summary = "Lista todos os usuários", description = "Retorna todos os funcionários cadastrados")

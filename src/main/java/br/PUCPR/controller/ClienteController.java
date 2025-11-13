@@ -1,8 +1,11 @@
 package br.PUCPR.controller;
 
+import br.PUCPR.exception.BusinessException;
 import br.PUCPR.model.Cliente;
 import br.PUCPR.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,10 +29,16 @@ public class ClienteController {
         return clienteRepository.findById(id).orElse(null);
     }
 
-    //Cadastrar Cliente
+    //alterei o metodo para incluir o exception - leonardo
     @PostMapping
-    public Cliente criar(@RequestBody Cliente cliente) {
-        return clienteRepository.save(cliente);
+    public ResponseEntity<Cliente> criar(@RequestBody Cliente cliente) {
+        // Validação: não pode haver dois clientes com o mesmo CPF
+        if (clienteRepository.existsByCpf(cliente.getCpf())) {
+            throw new BusinessException("CPF_DUPLICADO", "Já existe um cliente com este CPF.");
+        }
+
+        Cliente novo = clienteRepository.save(cliente);
+        return ResponseEntity.status(HttpStatus.CREATED).body(novo);
     }
 
     // Atualizar Cliente

@@ -45,4 +45,8 @@ public class Aluguel {
         this.status = status;
         this.valorTotal = valorTotal;
     }
+
+    public Object getFkCarroId() {
+        return carroId;
+    }
 }
