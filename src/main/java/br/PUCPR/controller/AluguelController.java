@@ -1,7 +1,6 @@
 package br.PUCPR.controller;
 
 import br.PUCPR.model.Aluguel;
-import br.PUCPR.dto.AluguelJoinDTO;
 import br.PUCPR.repository.AluguelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,19 +15,19 @@ public class AluguelController {
     @Autowired
     private AluguelRepository aluguelRepository;
 
-    // Listar todos os aluguéis (com JOIN)
+    // Listar todos os aluguéis (SEM JOIN) — retorna a entidade Aluguel
     @GetMapping
-    public List<AluguelJoinDTO> listar() {
-        return aluguelRepository.findAllWithJoin();
+    public List<Aluguel> listar() {
+        return aluguelRepository.findAll();
     }
 
-    // Buscar Aluguel pelo ID (com JOIN)
+    // Buscar Aluguel pelo ID (SEM JOIN)
     @GetMapping("/{id}")
-    public AluguelJoinDTO buscarPorId(@PathVariable Long id) {
-        return aluguelRepository.findByIdWithJoin(id).orElse(null);
+    public Aluguel buscarPorId(@PathVariable Long id) {
+        return aluguelRepository.findById(id).orElse(null);
     }
 
-    // Listar aluguéis básicos (sem JOIN - opcional)
+    // Mantive um endpoint /basico caso queira outra rota - agora redundante, mas deixei por compatibilidade
     @GetMapping("/basico")
     public List<Aluguel> listarBasico() {
         return aluguelRepository.findAll();
