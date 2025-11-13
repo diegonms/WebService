@@ -80,4 +80,44 @@ INSERT INTO MANUTENCAO (ID_MANUTENCAO, FK_CARRO_ID, DATA_MANUTENCAO, DESCRICAO, 
 (4, 10, '2024-11-30', 'Reparo no sistema elétrico', 400.00),
 (5, 4, '2024-04-22', 'Troca de pneus e balanceamento', 1200.00);
 
+-- ===============================================
+-- POPULAR AVALIACOES DE CLIENTES
+-- ===============================================
 
+-- Apaga avaliações antigas (opcional)
+DELETE FROM AVALIACAO;
+
+-- Inserindo avaliações de exemplo
+INSERT INTO AVALIACAO (FK_ALUGUEL_ID, NOTA, COMENTARIO, DATA_AVALIACAO)
+VALUES
+    (1, 5, 'Excelente atendimento e carro em perfeito estado!', '2025-11-10'),
+    (2, 4, 'Carro bom, mas o tanque não estava cheio.', '2025-11-11'),
+    (3, 5, 'Serviço impecável, recomendo!', '2025-11-12'),
+    (4, 3, 'Demora na entrega do carro, mas atendimento foi bom.', '2025-11-13'),
+    (5, 4, 'Bom custo-benefício, voltaria a alugar.', '2025-11-13'),
+    (6, 2, 'Carro estava limpo, mas apresentou falhas mecânicas.', '2025-11-13'),
+    (7, 5, 'Tudo certo! Funcionários muito educados.', '2025-11-13'),
+    (8, 3, 'Carro bom, mas o processo de devolução foi lento.', '2025-11-13'),
+    (9, 5, 'Atendimento rápido e carro novo. Excelente!', '2025-11-13'),
+    (10, 4, 'Boa experiência geral, recomendo a locadora.', '2025-11-13');
+
+-- ===============================================
+-- POPULAR TABELA SEGURO
+-- ===============================================
+
+-- Limpa os dados antigos (opcional)
+DELETE FROM SEGURO;
+
+-- Insere seguros de exemplo
+INSERT INTO SEGURO (FK_ALUGUEL_ID, TIPO, VALOR, COBERTURA, DATA_INICIO, DATA_FIM)
+VALUES
+    (1, 'BASICO', 150.00, 'Cobertura contra danos leves e roubo parcial', '2025-11-10', '2025-11-20'),
+    (2, 'COMPLETO', 300.00, 'Cobertura total + guincho + terceiros', '2025-11-11', '2025-11-22'),
+    (3, 'PREMIUM', 450.00, 'Cobertura total, terceiros e motorista adicional', '2025-11-12', '2025-11-25'),
+    (4, 'BASICO', 120.00, 'Cobertura simples contra danos e furto', '2025-11-13', '2025-11-17'),
+    (5, 'COMPLETO', 280.00, 'Guincho, terceiros e reparos inclusos', '2025-11-13', '2025-11-21'),
+    (6, 'PREMIUM', 400.00, 'Seguro total + substituição de veículo', '2025-11-13', '2025-11-24'),
+    (7, 'BASICO', 130.00, 'Cobertura básica com assistência 24h', '2025-11-13', '2025-11-19'),
+    (8, 'COMPLETO', 270.00, 'Cobertura total + terceiros', '2025-11-13', '2025-11-23'),
+    (9, 'PREMIUM', 500.00, 'Cobertura completa + motorista reserva', '2025-11-13', '2025-11-28'),
+    (10, 'BASICO', 110.00, 'Cobertura básica com assistência em viagem', '2025-11-13', '2025-11-18');
